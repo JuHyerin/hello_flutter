@@ -4,6 +4,7 @@ import 'package:hello_flutter_wirh_intellij/models/todo.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+/* supports iOS, Android, MacOS */
 class TodoSqlite {
   late Database db;
 
@@ -12,7 +13,7 @@ class TodoSqlite {
     //`path` 패키지의 `join` 함수를 사용하는 것이 각 플랫폼 별로 경로가 제대로 생성됐는지 보장할 수 있는 가장 좋은 방법
     db = await openDatabase(join(await getDatabasesPath(), 'my_db.db'));
     await db.execute(
-      'CREATE TABLE IF NOT EXIST MyTodo ('
+      'CREATE TABLE IF NOT EXISTS MyTodo ('
           'id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,'
           'title TEXT,'
           'description TEXT'
