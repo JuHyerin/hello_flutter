@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hello_flutter_wirh_intellij/screens/book_list/detail_screen.dart';
 import 'package:hello_flutter_wirh_intellij/screens/book_list/list_screen.dart';
@@ -7,7 +8,13 @@ import 'package:hello_flutter_wirh_intellij/screens/state_practice//counter_scre
 import 'package:hello_flutter_wirh_intellij/screens/timer_app/timer_screen.dart';
 import 'package:hello_flutter_wirh_intellij/screens/todo_list/splash_screen.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
