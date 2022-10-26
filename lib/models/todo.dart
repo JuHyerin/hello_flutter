@@ -36,7 +36,7 @@ class Todo {
     id = map['id'];
     title = map['title'];
     description = map['description'];
-    reference = map['reference'];
+    reference = document.reference;
   }
 }
 

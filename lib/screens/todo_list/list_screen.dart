@@ -1,10 +1,7 @@
-import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hello_flutter_wirh_intellij/models/todo.dart';
-import 'package:hello_flutter_wirh_intellij/providers/todo_default.dart';
 import 'package:hello_flutter_wirh_intellij/providers/todo_firebase.dart';
-import 'package:hello_flutter_wirh_intellij/providers/todo_sqlite.dart';
 import 'package:hello_flutter_wirh_intellij/screens/book_list/dialogs/detail_dialog.dart';
 
 class ListScreen extends StatefulWidget {
@@ -33,7 +30,9 @@ class _ListScreenState extends State<ListScreen> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
+        stream: todoFirebase.todoStream,
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          print(snapshot);
           if(!snapshot.hasData) {
             return Scaffold(
               appBar: AppBar(),
@@ -152,8 +151,9 @@ class _ListScreenState extends State<ListScreen> {
                                             actions: [
                                               TextButton(
                                                   onPressed: () async{
-                                                    await todoFirebase.updateTodo(Todo(id: todos[index].id, title: title, description: description));
-                                                    Navigator.of(context).pop();
+                                                    todoFirebase
+                                                      .updateTodo(Todo(reference: todos[index].reference,title: title, description: description))
+                                                      .then((_) => Navigator.of(context).pop());
                                                   },
                                                   child: const Text('수정')
                                               ),
