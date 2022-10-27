@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:hello_flutter_wirh_intellij/screens/book_list/detail_screen.dart';
 import 'package:hello_flutter_wirh_intellij/screens/book_list/list_screen.dart';
 import 'package:hello_flutter_wirh_intellij/screens/navigator_practice//first_screen.dart';
 import 'package:hello_flutter_wirh_intellij/screens/navigator_practice//second_screen.dart';
 import 'package:hello_flutter_wirh_intellij/screens/state_practice//counter_screen.dart';
 import 'package:hello_flutter_wirh_intellij/screens/timer_app/timer_screen.dart';
+import 'package:hello_flutter_wirh_intellij/screens/todo_list/news_screen.dart';
 import 'package:hello_flutter_wirh_intellij/screens/todo_list/splash_screen.dart';
 
 import 'firebase_options.dart';
@@ -41,6 +41,8 @@ class MyApp extends StatelessWidget {
       // home: const FirstScreen(),
       routes: <String, WidgetBuilder> {
         '/': (BuildContext context) => const SplashScreen(),
+
+        '/todo/news': (BuildContext context) => NewsScreen(),
 
         '/timer': (BuildContext context) => TimerScreen(),
 

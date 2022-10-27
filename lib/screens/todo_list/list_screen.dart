@@ -32,7 +32,6 @@ class _ListScreenState extends State<ListScreen> {
     return StreamBuilder(
         stream: todoFirebase.todoStream,
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          print(snapshot);
           if(!snapshot.hasData) {
             return Scaffold(
               appBar: AppBar(),
@@ -45,7 +44,9 @@ class _ListScreenState extends State<ListScreen> {
                 title: const Text('할 일 목록 앱'),
                 actions: [
                   InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, '/todo/news');
+                      },
                       child: Container(
                           padding: const EdgeInsets.all(5),
                           child: Column(
